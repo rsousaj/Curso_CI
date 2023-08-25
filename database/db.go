@@ -15,10 +15,11 @@ var (
 
 func ConectaComBancoDeDados() {
 	val, ok := os.LookupEnv("DB_PASSWORD")
+	var stringDeConexao string
 	if !ok {
-		stringDeConexao := "host=localhost user=root password=root dbname=root port=5433 sslmode=disable"
+		stringDeConexao = "host=localhost user=root password=root dbname=root port=5433 sslmode=disable"
 	} else {
-		stringDeConexao := "host=localhost user=root password=" + val + " dbname=root port=5433 sslmode=disable"
+		stringDeConexao = "host=localhost user=root password=" + val + " dbname=root port=5433 sslmode=disable"
 	}
 
 	DB, err = gorm.Open(postgres.Open(stringDeConexao))
