@@ -10,9 +10,6 @@ on:
 #  pull_request:
 #    branches: [ "main" ]
 
-env:
-  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-
 jobs:
 
   test:
@@ -27,9 +24,13 @@ jobs:
 
     - name: Inicia db
       run: docker compose up -d
+      env:
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
     - name: Test
       run: go test -v main_test.go
+      env:
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
   build:
     needs: test
