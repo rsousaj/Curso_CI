@@ -6,8 +6,9 @@ name: Go
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# remove from pull_request
+#  pull_request:
+#    branches: [ "main" ]
 
 jobs:
 
@@ -24,5 +25,5 @@ jobs:
     - name: Build
       run: go build -v main.go
 
-#    - name: Test
-#      run: go test -v ./...
+    - name: Test
+      run: go test -v main_test.go
